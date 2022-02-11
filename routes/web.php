@@ -18,14 +18,22 @@ use Illuminate\Support\Facades\Route;
 require __DIR__.'/auth.php';
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    $logo = \App\Models\Logo::get()->first();
+    $news = \App\Models\News::get()->first();
+    $posts = \App\Models\Post::latest()->paginate(18);
+    $post_randoms = \App\Models\Post::inRandomOrder()->take(10)->get();
+    $post_recents = \App\Models\Post::latest()->take(10)->get();
+    return view('welcome',compact('logo','news','posts','post_randoms','post_recents'));
+})->name('welcome');
 
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
 Route::resource('/secure/logo',\App\Http\Controllers\Backend\LogoController::class);
+Route::get('/about',[\App\Http\Controllers\AboutController::class,'index'])->name('about');
+Route::get('/contact',[\App\Http\Controllers\ContactController::class,'index'])->name('contact');
 
 
 //socialite login

@@ -53,25 +53,25 @@
             </div>
         </form>
 
-        <div class="text-center mt-2">
-            <p>
-                <strong>Or Sign In With</strong>
-            </p>
-            <a href="{{ route('login.provider','github') }}"
-               style="color: white;
-               background: grey;
-               border-radius: 5px;
-               padding: 4px;
-               "
-            >Github</a>
-            <a href="{{ route('login.provider','google') }}"
-               style="color: darkred;
-               background: grey;
-               border-radius: 5px;
-               padding: 4px;
-               "
-            >Google</a>
-        </div>
+{{--        <div class="text-center mt-2">--}}
+{{--            <p>--}}
+{{--                <strong>Or Sign In With</strong>--}}
+{{--            </p>--}}
+{{--            <a href="{{ route('login.provider','github') }}"--}}
+{{--               style="color: white;--}}
+{{--               background: grey;--}}
+{{--               border-radius: 5px;--}}
+{{--               padding: 4px;--}}
+{{--               "--}}
+{{--            >Github</a>--}}
+{{--            <a href="{{ route('login.provider','google') }}"--}}
+{{--               style="color: darkred;--}}
+{{--               background: grey;--}}
+{{--               border-radius: 5px;--}}
+{{--               padding: 4px;--}}
+{{--               "--}}
+{{--            >Google</a>--}}
+{{--        </div>--}}
 
     </x-auth-card>
 </x-guest-layout>

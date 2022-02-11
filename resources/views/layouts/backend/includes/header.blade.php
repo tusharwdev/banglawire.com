@@ -1,12 +1,12 @@
- <div class="app-header__logo">
+<div class="app-header__logo">
 {{--        <div class="logo-src"></div>--}}
      {{ setting('site_title') }}
         <div class="header__pane ml-auto">
             <div>
                 <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
-                            <span class="hamburger-box">
-                                <span class="hamburger-inner"></span>
-                            </span>
+                       <span class="hamburger-box">
+                            <span class="hamburger-inner"></span>
+                       </span>
                 </button>
             </div>
         </div>
@@ -35,7 +35,7 @@
             <ul class="header-menu nav">
 
                 <li class="dropdown nav-item">
-                    <a href="{{ route('dashboard') }}" class="nav-link">
+                    <a href="{{ route('welcome') }}" class="nav-link">
                         <i class="nav-link-icon fa fa-cog"></i>
                         Visit Site
                     </a>

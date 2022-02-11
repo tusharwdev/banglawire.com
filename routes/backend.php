@@ -1,6 +1,7 @@
 <?php
 
 
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,6 +20,9 @@ Route::group(['as'=>'secure.','prefix'=>'secure','namespace'=>'\App\Http\Control
     Route::get('/dashboard',DashboardController::class)->name('dashborad');
 
 //    Logo
+//News
+    Route::resource('news', NewsControler::class);
+    Route::resource('post',PostController::class);
 
 //    Roles and Users
     Route::resource('roles',RoleController::class);

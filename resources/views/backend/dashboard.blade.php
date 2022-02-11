@@ -1,4 +1,12 @@
 @extends('layouts.backend.app')
+@push('css')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css" integrity="sha512-EZSUkJWTjzDlspOoPSpUFR0o0Xy7jdzW//6qhUkoZ9c4StFkVsp9fbbd0O06p9ELS3H486m4wmrCELjza4JEog==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        .dropify-wrapper .dropify-message p{
+            font-size: initial;
+        }
+    </style>
+@endpush
 @section('content')
     <div class="app-page-title">
         <div class="page-title-wrapper">
@@ -18,8 +26,9 @@
             </div>
         </div>
     </div>
+
     <div class="row">
-        <div class="col-md-6 col-xl-4">
+        <div class="col-md-12 col-xl-4">
             <div class="card mb-3 widget-content bg-midnight-bloom">
                 <div class="widget-content-wrapper text-white">
                     <div class="widget-content-left">
@@ -37,7 +46,7 @@
                 <div class="widget-content-wrapper text-white">
                     <div class="widget-content-left">
                         <div class="widget-heading">Roles</div>
-{{--                        <div class="widget-subheading">Total Clients Profit</div>--}}
+                        <div class="widget-subheading">Total Clients Profit</div>
                     </div>
                     <div class="widget-content-right">
                         <div class="widget-numbers text-white"><span>{{ $rolesCount }}</span></div>
@@ -163,3 +172,16 @@
     </div>
 
 @endsection
+@push('js')
+    <script
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js" integrity="sha512-8QFTrG0oeOiyWo/VM9Y8kgxdlCryqhIxVeRpWSezdRRAvarxVtwLnGroJgnVW9/XBRduxO/z1GblzPrMQoeuew==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('.dropify').dropify();
+        });
+    </script>
+@endpush

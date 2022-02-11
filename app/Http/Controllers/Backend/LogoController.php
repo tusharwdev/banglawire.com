@@ -15,8 +15,7 @@ class LogoController extends Controller
      */
     public function index()
     {
-        $site_logo  = Logo::all();
-
+        $site_logo  = Logo::get()->first();
         return view('backend.logo',compact('site_logo'));
     }
 
@@ -38,9 +37,7 @@ class LogoController extends Controller
      */
     public function store(Request $request)
     {
-        Logo::create()->addMedia($request->site_logo)->toMediaCollection('site_logo');
 
-        return back();
     }
 
     /**
@@ -74,7 +71,10 @@ class LogoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $logo = Logo::findOrFail($id);
+            $logo->addMedia($request->site_logo)->toMediaCollection('site_logo');
+
+        return back();
     }
 
     /**
