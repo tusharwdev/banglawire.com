@@ -68,12 +68,19 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('contact') }}">Contact-Us</a>
                             </li>
-{{--                            <li class="nav-item">--}}
-{{--                                <a class="nav-link" href="#">Food</a>--}}
-{{--                            </li>--}}
-{{--                            <li class="nav-item">--}}
+                          @foreach ($categories as $category)
+                           <li class="nav-item dropdown" >
+                               <a class="nav-link dropdown-toggle" href="{{route('get.category',$category->id)}}" id="{{$category->id}}" role="button"  >
+                                    {{$category->category_name}}
+                               </a>
+                               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                   {{-- "<li><a class='dropdown-item' href="{{route('get.subcategory')}}">".hello."</a></li>" --}}
+                             </ul>
+                         </li>
+                          @endforeach
+{{--                            <li class="nav-item">
 {{--                                <a class="nav-link" href="#">Video</a>--}}
-{{--                            </li>--}}
+{{--                            </li>
 {{--                            <li class="nav-item">--}}
 {{--                                <a class="nav-link" href="#">Latest</a>--}}
 {{--                            </li>--}}
@@ -86,16 +93,7 @@
 {{--                            <li class="nav-item">--}}
 {{--                                <a class="nav-link" href="#">Trending</a>--}}
 {{--                            </li>--}}
-{{--                            <li class="nav-item dropdown">--}}
-{{--                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">--}}
-{{--                                    Section--}}
-{{--                                </a>--}}
-{{--                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">--}}
-{{--                                    <li><a class="dropdown-item" href="#">Demo Action1</a></li>--}}
-{{--                                    <li><a class="dropdown-item" href="#">Demo Action2</a></li>--}}
-{{--                                    <li><a class="dropdown-item" href="#">Deno Action3</a></li>--}}
-{{--                                </ul>--}}
-{{--                            </li>--}}
+{{--
 
                         </ul>
 
@@ -449,4 +447,34 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <!-- custom js -->
 <script src="{{ asset('frontend_assets/js/nav_date.js') }}"></script>
+<script>
+    $(document).ready(function() {
+            $('.nav-link').mouseover(function(){
+                var category_id = $(this).attr('id');
+                    // alert(category_id);
+
+                    //ajax start here
+                $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            }
+                        });
+                //custom ajax code start here
+                $.ajax({
+                    type:'POST',
+                    url:'/get/home/subcategory',
+                    data:{category_id:category_id},
+
+                    success: function(data){
+                        // alert(data);
+                        $('.dropdown-menu').html(data);
+                    },
+                 });
+                //end ajax
+            });
+
+
+
+        });
+</script>
 </html>

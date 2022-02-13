@@ -66,6 +66,22 @@
             <div class="card-body">
                 <h5 class="card-title"> </h5>
                 <h5 class="card-title" style="color: white"> All News Section</h5>
+                <label for="heading" style="color: white">Select Category</label>
+                <div class="form-group">
+                    <select class="col-4" id="category_dropdown" name="category_id">
+                        <option value="">-select category onec-</option>
+                        @foreach ($categories as $category)
+                        <option value="{{$category->id}}">{{$category->category_name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <label for="heading" style="color: white">Select SubCategory</label>
+                <div class="form-group">
+                    <select class="col-4" id="subcategory_dropdown" name="subcategory_id">
+                        <option value="">-select subcategory onec-</option>
+                    </select>
+                </div>
 
                 <div class="form-group" name="heading" >
                     <label for="heading" style="color: white">News Headline</label>
@@ -145,8 +161,30 @@
             contextmenu: "link image imagetools table",
         });
         $(document).ready(function() {
-
             $('.dropify').dropify();
+            $('#category_dropdown').change(function(){
+             var category_id = $(this).val();
+                // alert(category_id);
+
+                 //ajax start here
+            $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+            //custom ajax code start here
+            $.ajax({
+                type:'POST',
+                url:'/get/subcategory',
+                data:{category_id:category_id},
+
+                success: function(data){
+                    $('#subcategory_dropdown').html(data);
+                },
+            });
+            //end ajax
+            });
+
         });
     </script>
 @endpush

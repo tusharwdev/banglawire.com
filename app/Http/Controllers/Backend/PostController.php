@@ -37,6 +37,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        // return $request;
        $this->validate($request,[
         'heading' => 'required ',
         'description' => 'required',
@@ -46,6 +47,8 @@ class PostController extends Controller
        $post = Post::create([
         'heading' => $request->heading,
         'description' => $request->description,
+        'category_id' => $request->category_id,
+        'subcategory_id' => $request->subcategory_id,
        ]);
        $post->addMedia($request->image)->toMediaCollection('post_img');
         notify()->success('News Submited Successfully !','Success');

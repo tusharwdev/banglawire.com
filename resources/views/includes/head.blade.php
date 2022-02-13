@@ -2,6 +2,7 @@
 <title>Banglawire News Portal</title>
 <meta name="description" content="Katen - Minimal Blog & Magazine HTML Theme">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png">
 <!-- STYLES -->
 <link rel="stylesheet" href="{{ asset('frontend_assets/css/bootstrap.min.css') }}" type="text/css" media="all">
