@@ -1,71 +1,92 @@
+<div class="nav_container">
+    <div class="nav_top_container">
+        <div class="nav_top">
+            <div class="nav_top_leftText">
+                <h4 style="color:whitesmoke;"><span>Stay Connected</span> | <span>We Report to You</span>  </h4>
+            </div>
+            <div class="nav_top_icons">
+                {{--                    <span class="search_icon"><i class="fas fa-search"></i></span>--}}
+                <span><i class="fab fa-facebook-f"></i></span>
+                {{--                    <span><i class="fab fa-twitter"></i></span>--}}
+                {{--                    <span><i class="fab fa-vimeo-v"></i></span>--}}
+                <span><i class="fab fa-youtube"></i></span>
+            </div>
+        </div>
+    </div>
 
+    <br>
+    <div class="nav_logo_date">
+        <div class="nav_logo_contianer">
 
+            <a href="{{ route('welcome') }}"><img src="{{$logo->getMedia('site_logo')->first()->getUrl()}}" alt="logo"></a>
+        </div>
 
-{{--<header class="header-default">--}}
-{{--    <nav class="navbar navbar-expand-lg">--}}
-{{--        <div class="container-xl">--}}
-{{--            <!-- site logo -->--}}
-{{--            <a class="navbar-brand" href="index.html"><img src="images/logo.svg" alt="logo" /></a>--}}
+        <div class="nav_date_container" style="margin-top: 10px;">
+            <p id="date_time"></p>
+        </div>
+    </div>
 
-{{--            <div class="collapse navbar-collapse">--}}
-{{--                <!-- menus -->--}}
-{{--                <ul class="navbar-nav mr-auto">--}}
-{{--                    <li class="nav-item dropdown active">--}}
-{{--                        <a class="nav-link dropdown-toggle" href="index.html">Home</a>--}}
-{{--                        <ul class="dropdown-menu">--}}
-{{--                            <li><a class="dropdown-item" href="index.html">Magazine</a></li>--}}
-{{--                            <li><a class="dropdown-item" href="personal.html">Personal</a></li>--}}
-{{--                            <li><a class="dropdown-item" href="personal-alt.html">Personal Alt</a></li>--}}
-{{--                            <li><a class="dropdown-item" href="minimal.html">Minimal</a></li>--}}
-{{--                            <li><a class="dropdown-item" href="classic.html">Classic</a></li>--}}
-{{--                        </ul>--}}
-{{--                    </li>--}}
-{{--                    <li class="nav-item">--}}
-{{--                        <a class="nav-link" href="category.html">Lifestyle</a>--}}
-{{--                    </li>--}}
-{{--                    <li class="nav-item">--}}
-{{--                        <a class="nav-link" href="category.html">Inspiration</a>--}}
-{{--                    </li>--}}
-{{--                    <li class="nav-item dropdown">--}}
-{{--                        <a class="nav-link dropdown-toggle" href="#">Pages</a>--}}
-{{--                        <ul class="dropdown-menu">--}}
-{{--                            <li><a class="dropdown-item" href="category.html">Category</a></li>--}}
-{{--                            <li><a class="dropdown-item" href="blog-single.html">Blog Single</a></li>--}}
-{{--                            <li><a class="dropdown-item" href="blog-single-alt.html">Blog Single Alt</a></li>--}}
-{{--                            <li><a class="dropdown-item" href="about.html">About</a></li>--}}
-{{--                            <li><a class="dropdown-item" href="contact.html">Contact</a></li>--}}
-{{--                        </ul>--}}
-{{--                    </li>--}}
-{{--                    <li class="nav-item">--}}
-{{--                        <a class="nav-link" href="contact.html">Contact</a>--}}
-{{--                    </li>--}}
-{{--                </ul>--}}
-{{--            </div>--}}
+    <div class="nav_bottom_container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{{ route('welcome') }}">Home</a>
+                        </li>
 
-{{--            <!-- header right section -->--}}
-{{--            <div class="header-right">--}}
-{{--                <!-- social icons -->--}}
-{{--                <ul class="social-icons list-unstyled list-inline mb-0">--}}
-{{--                    <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>--}}
-{{--                    <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>--}}
-{{--                    <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>--}}
-{{--                    <li class="list-inline-item"><a href="#"><i class="fab fa-pinterest"></i></a></li>--}}
-{{--                    <li class="list-inline-item"><a href="#"><i class="fab fa-medium"></i></a></li>--}}
-{{--                    <li class="list-inline-item"><a href="#"><i class="fab fa-youtube"></i></a></li>--}}
-{{--                </ul>--}}
-{{--                <!-- header buttons -->--}}
-{{--                <div class="header-buttons">--}}
-{{--                    <button class="search icon-button">--}}
-{{--                        <i class="icon-magnifier"></i>--}}
-{{--                    </button>--}}
-{{--                    <button class="burger-menu icon-button">--}}
-{{--                        <span class="burger-icon"></span>--}}
-{{--                    </button>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </nav>--}}
-{{--  --}}
-{{--</header>--}}
+                        @foreach ($categories as $category)
 
+                            <li class="nav-item dropdown" >
+                                <a class="nav-link dropdown-toggle" href="{{route('get.category',$category->id)}}" id="{{$category->id}}" role="button"  >
+                                    {{$category->category_name}}
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    {{-- "<li><a class='dropdown-item' href="{{route('get.subcategory')}}">".hello."</a></li>" --}}
+                                </ul>
 
+                            </li>
+                    @endforeach
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('about') }}">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('contact') }}">Contact-Us</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+</div>
+<br>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function() {
+        $('.nav-link').mouseover(function(){
+            var category_id = $(this).attr('id');
+            // alert(category_id);
+            //ajax start here
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            //custom ajax code start here
+            $.ajax({
+                type:'POST',
+                url:'/get/home/subcategory',
+                data:{category_id:category_id},
+                success: function(data){
+                    // alert(data);
+                    $('.dropdown-menu').html(data);
+                },
+            });
+            //end ajax
+        });
+    });
+</script>

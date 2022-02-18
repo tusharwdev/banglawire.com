@@ -4,7 +4,7 @@
             <div class="row d-flex align-items-center gy-4">
                 <!-- copyright text -->
                 <div class="col-md-4">
-                    <span class="copyright">© 2022 Banglawire | Developed By  <a href="https://www.fiverr.com/kazitushar1">Kazi Badruz Zaman</a> </span>
+                    <span class="copyright">© 2022 Banglawire | Developed By  <a href="https://www.fiverr.com/kazitushar1">Boishakhi IT</a> </span>
                 </div>
 
                 <!-- social icons -->
