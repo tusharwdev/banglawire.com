@@ -15,4 +15,9 @@ class Post extends Model implements HasMedia
     {
         $this->addMediaCollection('post_img')->singleFile();
     }
+
+    public function relationtosubcategory()
+    {
+        return $this->hasOne(Subcategory::class, 'id', 'subcategory_id');
+    }
 }

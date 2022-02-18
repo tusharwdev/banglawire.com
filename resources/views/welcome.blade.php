@@ -213,7 +213,7 @@
                 <div class="col-lg-12">
 
                     <!-- section header -->
-{{--                    <div class="section-header">--}}
+                   {{-- <div class="section-header">--}}
 {{--                        <h3 class="section-title">Editor’s Pick</h3>--}}
 {{--                        <img src="images/wave.svg" class="wave" alt="wave" />--}}
 {{--                    </div>--}}
@@ -311,7 +311,7 @@
 {{--                        </div>--}}
 {{--                    </div>--}}
 
-{{--                    <div class="spacer" data-height="50"></div>--}}
+{{--                    <div class="spacer" data-height="50"></div> --}}
 
                     <!-- horizontal ads -->
 
