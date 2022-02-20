@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\News;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -18,7 +19,8 @@ class NewsControler extends Controller
     public function index()
     {
         $news = News::get()->first();
-        return view('backend.news',compact('news'));
+        $categories = Category::all();
+        return view('backend.news',compact('news', 'categories'));
     }
 
     /**

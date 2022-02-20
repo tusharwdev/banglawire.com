@@ -32,6 +32,7 @@
             <div class="card-body">
                 <h5 class="card-title"> </h5>
                 <h5 class="card-title" style="color: white"> Upload Main Banner</h5>
+
                 <div class="form-group">
                     <label for="banner" style="color: white">Main Banner</label>
                     <input type="file" id="banner" data-default-file="{{ $news->getFirstMediaUrl('banner') }}"
@@ -42,6 +43,32 @@
                     <span class="text-danger" role="alert">
                                          <strong>{{ $message  }}</strong>
                                     </span>
+                    @enderror
+                </div>
+
+                <div class="form-group" name="main_heading" >
+                    <label for="main_heading" style="color: white">Main News Headline</label>
+                    <input type="text" id="main_heading" placeholder="Enter Main Heading..."
+                           class="form-control  @error('main_heading') is-invalid @enderror "
+                               name="main_heading"
+                    >
+                    @error('heading')
+                    <span class="text-danger" role="alert">
+                                         <strong>{{ $message  }}</strong>
+                                    </span>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="description"><strong style="color: white"> Main News Details</strong></label>
+                    <textarea name="description" class="form-control @error('description') is-invalid @enderror"   id="maindescription" cols="30" rows="10">
+                                    {{ $post->description ?? old('body')}}
+                                </textarea>
+
+                    @error('description')
+                    <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message  }}</strong>
+                            </span>
                     @enderror
                 </div>
 
@@ -66,6 +93,22 @@
             <div class="card-body">
                 <h5 class="card-title"> </h5>
                 <h5 class="card-title" style="color: white"> All News Section</h5>
+                <label for="heading" style="color: white">Select Category</label>
+                <div class="form-group">
+                    <select class="col-4" id="category_dropdown" name="category_id">
+                        <option value="">-select category onec-</option>
+                        @foreach ($categories as $category)
+                        <option value="{{$category->id}}">{{$category->category_name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <label for="heading" style="color: white">Select SubCategory</label>
+                <div class="form-group">
+                    <select class="col-4" id="subcategory_dropdown" name="subcategory_id">
+                        <option value="">-select subcategory onec-</option>
+                    </select>
+                </div>
 
                 <div class="form-group" name="heading" >
                     <label for="heading" style="color: white">News Headline</label>
@@ -144,9 +187,47 @@
             toolbar_mode: 'sliding',
             contextmenu: "link image imagetools table",
         });
+        tinymce.init({
+            selector: '#maindescription',
+            plugins: 'print preview paste importcss searchreplace autolink directionality code visualblocks visualchars image link media codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars emoticons',
+            imagetools_cors_hosts: ['picsum.photos'],
+            toolbar: 'undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | preview | insertfile image media link anchor codesample | ltr rtl',
+            toolbar_sticky: true,
+            image_advtab: true,
+            content_css: '//www.tiny.cloud/css/codepen.min.css',
+            importcss_append: true,
+            height: 400,
+            image_caption: true,
+            quickbars_selection_toolbar: 'bold italic | quicklink h2 h3 blockquote quickimage quicktable',
+            noneditable_noneditable_class: "mceNonEditable",
+            toolbar_mode: 'sliding',
+            contextmenu: "link image imagetools table",
+        });
         $(document).ready(function() {
-
             $('.dropify').dropify();
+            $('#category_dropdown').change(function(){
+             var category_id = $(this).val();
+                // alert(category_id);
+
+                 //ajax start here
+            $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+            //custom ajax code start here
+            $.ajax({
+                type:'POST',
+                url:'/get/subcategory',
+                data:{category_id:category_id},
+
+                success: function(data){
+                    $('#subcategory_dropdown').html(data);
+                },
+            });
+            //end ajax
+            });
+
         });
     </script>
 @endpush
