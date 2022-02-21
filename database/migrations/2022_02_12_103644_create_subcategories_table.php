@@ -15,7 +15,7 @@ class CreateSubcategoriesTable extends Migration
     {
         Schema::create('subcategories', function (Blueprint $table) {
             $table->id();
-            $table->integer('category_id');
+            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
             $table->string('subcategory_name');
             $table->timestamps();
         });

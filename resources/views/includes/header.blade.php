@@ -38,17 +38,22 @@
                             <a class="nav-link active" aria-current="page" href="{{ route('welcome') }}">Home</a>
                         </li>
 
-                        @foreach ($categories as $category)
 
-                            <li class="nav-item dropdown" >
+                        @foreach ($categories as $category)
+                        <li class="nav-item dropdown" >
                                 <a class="nav-link dropdown-toggle" href="{{route('get.category',$category->id)}}" id="{{$category->id}}" role="button"  >
                                     {{$category->category_name}}
                                 </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    {{-- "<li><a class='dropdown-item' href="{{route('get.subcategory')}}">".hello."</a></li>" --}}
-                                </ul>
+                                @if ($category->relationtosubcategory->count()!=0)
 
-                            </li>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        @foreach ($category->relationtosubcategory as $subcategory)
+                                            <li><a class='dropdown-item' href="">{{$subcategory->subcategory_name}}</a></li>
+                                            {{-- "<li><a class='dropdown-item' href="{{route('get.subcategory')}}">".hello."</a></li>" --}}
+                                        @endforeach
+                                    </ul>
+                                @endif
+                        </li>
                     @endforeach
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('about') }}">About</a>
@@ -66,27 +71,5 @@
 <br>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous"></script>
 <script>
-    $(document).ready(function() {
-        $('.nav-link').mouseover(function(){
-            var category_id = $(this).attr('id');
-            // alert(category_id);
-            //ajax start here
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            //custom ajax code start here
-            $.ajax({
-                type:'POST',
-                url:'/get/home/subcategory',
-                data:{category_id:category_id},
-                success: function(data){
-                    // alert(data);
-                    $('.dropdown-menu').html(data);
-                },
-            });
-            //end ajax
-        });
-    });
+    
 </script>

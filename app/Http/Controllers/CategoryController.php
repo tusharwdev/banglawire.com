@@ -107,7 +107,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        Subcategory::where('category_id', $category->id)->delete();
+       
         $category->delete();
         notify()->success('Category Deleted!', 'Success');
         return back();

@@ -18,6 +18,11 @@ class Post extends Model implements HasMedia
 
     public function relationtosubcategory()
     {
-        return $this->hasOne(Subcategory::class, 'id', 'subcategory_id');
+        return $this->belongsTo(Subcategory::class,'id');
+    }
+
+    public function relationtocategory()
+    {
+        return $this->belongsTo(Category::class,'id');
     }
 }

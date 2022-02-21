@@ -195,6 +195,7 @@
                     <!-- section header -->
                     <div class="section-header">
                         <h3 class="section-title">Editor’s Pick</h3>
+                        
                         <img src="images/wave.svg" class="wave" alt="wave" />
                     </div>
 

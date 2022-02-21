@@ -78,8 +78,11 @@ class NewsControler extends Controller
      */
     public function update(Request $request, $id)
     {
-        News::findOrFail($id)->addMedia($request->banner)->toMediaCollection('banner');
+        // // News::findOrFail($id)->addMedia($request->banner)->toMediaCollection('banner');
+        News::findOrFail($id)->update($request->except('_token'));
         return redirect()->back();
+
+
     }
 
     /**

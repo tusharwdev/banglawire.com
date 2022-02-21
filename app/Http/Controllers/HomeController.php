@@ -18,20 +18,6 @@ class HomeController extends Controller
        return view('welcome', compact('logo', 'news', 'posts', 'post_randoms', 'post_recents', 'categories'));
    }
 
-   public function gethomesubcategory(Request $request){
-        $strsub = "";
-        // <option>-se</option>
-        $subcategories =  Subcategory::where([
-            'category_id' => $request->category_id,
-        ])->get();
-        foreach ($subcategories as $subcategory) {
-
-            $url = route('get.subcategory', $subcategory->id);
-            $strsub .= "<li><a class='dropdown-item' href='$url'>" . $subcategory->subcategory_name . "</a></li>";
-
-        }
-        echo $strsub;
-   }
 
    public function getcategory($id){
         $logo = \App\Models\Logo::get()->first();
@@ -41,7 +27,7 @@ class HomeController extends Controller
         $post_recents = \App\Models\Post::latest()->take(10)->get();
         $categories = \App\Models\Category::all();
         $subcategorie = Category::where('id', $id)->first();
-    
+
 
     return view('post.posts', compact('logo', 'news', 'posts', 'post_randoms', 'post_recents','categories', 'subcategorie'));
    }
@@ -55,8 +41,8 @@ class HomeController extends Controller
         $post_randoms = \App\Models\Post::inRandomOrder()->take(10)->get();
         $post_recents = \App\Models\Post::latest()->take(10)->get();
         $categories = \App\Models\Category::all();
-        $subcategorie = Subcategory::where('id',$id)->first();
+        // $subcategorie = Subcategory::where('id',$id)->first();
 
-        return view('post.subposts', compact('logo', 'news', 'posts', 'post_randoms', 'post_recents', 'categories', 'subcategorie'));
+        return view('post.subposts', compact('logo', 'news', 'posts', 'post_randoms', 'post_recents', 'categories'));
     }
 }
