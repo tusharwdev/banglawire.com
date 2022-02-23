@@ -12,10 +12,14 @@ class HomeController extends Controller
         $logo = \App\Models\Logo::get()->first();
         $news = \App\Models\News::get()->first();
         $posts = \App\Models\Post::latest()->paginate(18);
-        $post_randoms = \App\Models\Post::inRandomOrder()->take(10)->get();
-        $post_recents = \App\Models\Post::latest()->take(10)->get();
-        $categories = \App\Models\Category::all();
-       return view('welcome', compact('logo', 'news', 'posts', 'post_randoms', 'post_recents', 'categories'));
+        $post_randoms = \App\Models\Post::inRandomOrder()->take(5)->get();
+        $post_recents = \App\Models\Post::latest()->take(5)->get();
+        $lfivepost = \App\Models\Post::latest()->take(5)->get();
+
+        $categories = \App\Models\Category::inRandomOrder()->get();
+        $fivecategories = \App\Models\Category::all()->take(5);
+
+       return view('welcome', compact('logo', 'news', 'posts', 'post_randoms', 'post_recents', 'categories','lfivepost','fivecategories'));
    }
 
 

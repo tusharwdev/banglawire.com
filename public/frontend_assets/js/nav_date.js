@@ -9,8 +9,9 @@ const monthArr = ["January","February","March","April","May","June","July","Augu
 const navLink = document.querySelectorAll('.nav-link')
 const search_icon = document.querySelectorAll('.search_icon')
 
+    // , ${currentYear}
 window.addEventListener('load',()=>{
-    document.querySelector('#date_time').textContent = `${dayArr[currentDay]},${monthArr[currntMonth]} ${currentDate}, ${currentYear}`
+    document.querySelector('#date_time').textContent = `${dayArr[currentDay]},${monthArr[currntMonth]} ${currentDate}`
 })
 
 
