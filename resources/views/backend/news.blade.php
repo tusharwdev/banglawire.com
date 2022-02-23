@@ -47,10 +47,11 @@
                 </div>
 
                 <div class="form-group" name="main_heading" >
+
                     <label for="main_heading" style="color: white">Main News Headline</label>
                     <input type="text" id="main_heading" placeholder="Enter Main Heading..."
                            class="form-control  @error('main_heading') is-invalid @enderror "
-                               name="main_heading"
+                               name="main_heading" value="{{$news->banner_headline}}"
                     >
                     @error('heading')
                     <span class="text-danger" role="alert">
@@ -62,7 +63,7 @@
                 <div class="form-group">
                     <label for="description"><strong style="color: white"> Main News Details</strong></label>
                     <textarea name="description" class="form-control @error('description') is-invalid @enderror"   id="maindescription" cols="30" rows="10">
-                                    {{ $post->description ?? old('body')}}
+                                    {{ $news->banner_description}}
                                 </textarea>
 
                     @error('description')

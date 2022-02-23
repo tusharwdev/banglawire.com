@@ -14,4 +14,14 @@ class Category extends Model
     {
         return $this->hasOne(User::class,'id');
     }
+
+    public function relationtosubcategory()
+    {
+        return $this->hasMany(Subcategory::class);
+    }
+
+    public function relationtoposts()
+    {
+        return $this->hasMany(Post::class);
+    }
 }

@@ -99,12 +99,12 @@
                         </thead>
                         <tbody>
                         @foreach($subcategories as $key=> $subcategory)
-
+                            {{-- {{$subcategory->relationtocategory->category_name}} --}}
                         <tr>
                             <td class="text-center text-muted">{{ $key + 1 }}</td>
 
                             <td class="text-center">
-                                 {{ $subcategory->relationtocategory->category_name}}
+                                 {{$subcategory->relationtocategory->category_name}}
                             </td>
 
                             <td class="text-center">

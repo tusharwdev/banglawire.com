@@ -9,9 +9,14 @@ class Subcategory extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
-    
+
     public function relationtocategory()
     {
-        return $this->hasOne(Category::class, 'id','category_id');
+        return $this->belongsTo(Category::class,'category_id','id');
+    }
+
+    public function relationtoposts()
+    {
+        return $this->belongsTo(Post::class,'id');
     }
 }

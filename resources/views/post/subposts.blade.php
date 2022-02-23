@@ -259,34 +259,5 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <!-- custom js -->
 <script src="{{ asset('frontend_assets/js/nav_date.js') }}"></script>
-<script>
-    $(document).ready(function() {
-            $('.nav-link').mouseover(function(){
-                var category_id = $(this).attr('id');
-                    // alert(category_id);
 
-                    //ajax start here
-                $.ajaxSetup({
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            }
-                        });
-                //custom ajax code start here
-                $.ajax({
-                    type:'POST',
-                    url:'/get/home/subcategory',
-                    data:{category_id:category_id},
-
-                    success: function(data){
-                        // alert(data);
-                        $('.dropdown-menu').html(data);
-                    },
-                 });
-                //end ajax
-            });
-
-
-
-        });
-</script>
 </html>

@@ -33,7 +33,7 @@ require __DIR__.'/auth.php';
 
 //home page
 Route::get('/',[HomeController::class,'welcome'])->name('welcome');
-Route::post('/get/home/subcategory',[HomeController::class, 'gethomesubcategory']);
+
 Route::get('/get/category/{category_id}',[HomeController::class, 'getcategory'])->name('get.category');
 Route::get('/get/subcategory/{subcategory_id}',[HomeController::class, 'getsubcategory'])->name('get.subcategory');
 
