@@ -20,7 +20,7 @@ class NewsControler extends Controller
     {
         $news = News::get()->first();
         $categories = Category::all();
-        return view('backend.news',compact('news', 'categories'));
+        return view('backend.news', compact('news', 'categories'));
     }
 
     /**
@@ -30,7 +30,6 @@ class NewsControler extends Controller
      */
     public function create()
     {
-
     }
 
     /**
@@ -55,7 +54,7 @@ class NewsControler extends Controller
     {
         $logo = \App\Models\Logo::get()->first();
         $post = Post::findOrFail($id)->first();
-        return view('news_details',compact('logo','post'));
+        return view('news_details', compact('logo', 'post'));
     }
 
     /**
@@ -78,11 +77,17 @@ class NewsControler extends Controller
      */
     public function update(Request $request, $id)
     {
-        // // News::findOrFail($id)->addMedia($request->banner)->toMediaCollection('banner');
-        News::findOrFail($id)->update($request->except('_token'));
+        // return $request;
+        if ($request->hasFile('banner')) {
+            $news = News::findOrFail($id)->addMedia($request->banner)->toMediaCollection('banner');
+        }
+        News::findOrFail($id)->update([
+            'heading' => $request->heading,
+            'description' => $request->description
+
+        ]);
+        // $news->addMedia($request->banner)->toMediaCollection('banner');
         return redirect()->back();
-
-
     }
 
     /**

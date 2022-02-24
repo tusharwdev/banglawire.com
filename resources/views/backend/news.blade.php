@@ -51,7 +51,7 @@
                     <label for="main_heading" style="color: white">Main News Headline</label>
                     <input type="text" id="main_heading" placeholder="Enter Main Heading..."
                            class="form-control  @error('main_heading') is-invalid @enderror "
-                               name="main_heading" value="{{$news->banner_headline}}"
+                               name="heading" value="{{$news->banner_headline}}"
                     >
                     @error('heading')
                     <span class="text-danger" role="alert">

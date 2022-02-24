@@ -19,9 +19,10 @@
                                 <li class="list-inline-item">29 March 2021</li>
                             </ul>
                         </div>
+                    
                         <a href="blog-single.html">
                             <div class="thumb rounded">
-                                <div class="inner data-bg-image" data-bg-image="images/posts/featured-lg.jpg"></div>
+                                <div class="inner data-bg-image" data-bg-image="{{ $news->getFirstMediaUrl('banner') }}"></div>
                             </div>
                         </a>
                     </div>

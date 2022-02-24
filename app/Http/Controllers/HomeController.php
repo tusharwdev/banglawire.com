@@ -18,6 +18,7 @@ class HomeController extends Controller
 
         $categories = \App\Models\Category::inRandomOrder()->get();
         $fivecategories = \App\Models\Category::all()->take(5);
+       
 
        return view('welcome', compact('logo', 'news', 'posts', 'post_randoms', 'post_recents', 'categories','lfivepost','fivecategories'));
    }
