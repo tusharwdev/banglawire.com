@@ -76,7 +76,7 @@
                     <div class="section-header">
                         {{ $post_info->heading }}
                         {{-- <h3 class="section-title">{{ $post->heading }}</h3> --}}
-                        <img src="{{ $post_info->getFirstMediaUrl('post_img') }}" class="wave" alt="wave" />
+                        <img src="{{ $post_info->getFirstMediaUrl('banner') }}" class="wave" alt="wave" />
                     </div>
 
                     <div class="padding-30 rounded bordered">

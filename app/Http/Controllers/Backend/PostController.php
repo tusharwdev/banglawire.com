@@ -98,7 +98,7 @@ class PostController extends Controller
             $post->addMedia($request->image)->toMediaCollection('post_img');
         }
         notify()->success('News Updated Successfully !','Success');
-        return redirect()->back();
+        return redirect()->route('secure.post.index');
     }
 
     /**

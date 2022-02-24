@@ -40,8 +40,9 @@
                     <!-- section header -->
                     <div class="section-header">
                         <h3 class="section-title">
-                            @if ($subcategorie->category_name)
-                            {{$subcategorie->category_name}} News
+                            {{-- {{$subcategories}} --}}
+                            @if ($subcategories->subcategory_name)
+                            {{$subcategories->subcategory_name}} News
                             @else
                             All News
                             @endif
@@ -62,7 +63,7 @@
 {{--                                        <span class="post-format">--}}
 {{--											<i class="icon-picture"></i>--}}
 {{--										</span>--}}
-                                        <a href="{{ route('secure.news.show',$post->id) }}">
+                                        <a href="{{ route('posts.details',$post->id) }}">
                                             <div class="inner">
                                                 <img src="{{ $post->getFirstMediaUrl('post_img') }}" alt="post-title" />
                                             </div>
@@ -72,7 +73,7 @@
 {{--                                        <li class="list-inline-item"><a href="#"><img src="images/other/author-sm.png" class="author" alt="author"/>Katen Doe</a></li>--}}
                                         <li class="list-inline-item">{{ $post->created_at->diffForhumans() }}</li>
                                     </ul>
-                                    <h5 class="post-title mb-3 mt-3"><a href="blog-single.html">{{ $post->heading }}</a></h5>
+                                    <h5 class="post-title mb-3 mt-3"><a href="{{ route('posts.details',$post->id) }}">{{ $post->heading }}</a></h5>
                                     <p class="excerpt mb-0">{!! \Illuminate\Support\Str::limit($post->description,100) !!}</p>
 
                                 </div>
@@ -86,7 +87,7 @@
 
 
                     </div>
-                    <!--new design -->
+                    {{-- <!--new design -->
                     <div class="row gy-4">
                         <div class="col-lg-8">
 
@@ -632,7 +633,7 @@
                             </div>
 
                         </div>
-                    </div>
+                    </div> --}}
 
                     <div class="spacer" data-height="50"></div>
 

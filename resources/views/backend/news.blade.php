@@ -46,24 +46,24 @@
                     @enderror
                 </div>
 
-                <div class="form-group" name="main_heading" >
+                <div class="form-group" name="heading" >
 
-                    <label for="main_heading" style="color: white">Main News Headline</label>
-                    <input type="text" id="main_heading" placeholder="Enter Main Heading..."
-                           class="form-control  @error('main_heading') is-invalid @enderror "
-                               name="heading" value="{{$news->banner_headline}}"
+                    <label for="heading" style="color: white">Main News Headline</label>
+                    <input type="text" id="heading" placeholder="Enter Main Heading..."
+                           class="form-control  @error('heading') is-invalid @enderror "
+                               name="heading" value="{{$news->heading}}"
                     >
                     @error('heading')
                     <span class="text-danger" role="alert">
-                                         <strong>{{ $message  }}</strong>
-                                    </span>
+                        <strong>{{ $message  }}</strong>
+                     </span>
                     @enderror
                 </div>
 
                 <div class="form-group">
                     <label for="description"><strong style="color: white"> Main News Details</strong></label>
                     <textarea name="description" class="form-control @error('description') is-invalid @enderror"   id="maindescription" cols="30" rows="10">
-                                    {{ $news->banner_description}}
+                                    {{ $news->description}}
                                 </textarea>
 
                     @error('description')

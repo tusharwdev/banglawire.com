@@ -36,6 +36,8 @@ Route::get('/',[HomeController::class,'welcome'])->name('welcome');
 
 Route::get('/get/category/{category_id}',[HomeController::class, 'getcategory'])->name('get.category');
 Route::get('/get/subcategory/{subcategory_id}',[HomeController::class, 'getsubcategory'])->name('get.subcategory');
+Route::get('/posts/details/{post_id}',[HomeController::class, 'postsdetails'])->name('posts.details');
+Route::get('/news/details/{news_id}',[HomeController::class, 'newsdetails'])->name('news.details');
 
 
 Route::get('/dashboard', function () {

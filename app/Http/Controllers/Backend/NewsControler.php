@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\News;
 use App\Models\Post;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use function view;
 
@@ -83,7 +84,8 @@ class NewsControler extends Controller
         }
         News::findOrFail($id)->update([
             'heading' => $request->heading,
-            'description' => $request->description
+            'description' => $request->description,
+            'updated_at' => Carbon::now(),
 
         ]);
         // $news->addMedia($request->banner)->toMediaCollection('banner');

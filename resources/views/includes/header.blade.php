@@ -48,7 +48,7 @@
 
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         @foreach ($category->relationtosubcategory as $subcategory)
-                                            <li><a class='dropdown-item' href="">{{$subcategory->subcategory_name}}</a></li>
+                                            <li><a class='dropdown-item' href="{{route('get.subcategory',$subcategory->id)}}">{{$subcategory->subcategory_name}}{{$subcategory->id}}</a></li>
                                             {{-- "<li><a class='dropdown-item' href="{{route('get.subcategory')}}">".hello."</a></li>" --}}
                                         @endforeach
                                     </ul>
