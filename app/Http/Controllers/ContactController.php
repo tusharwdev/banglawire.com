@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Logo;
 use App\Models\Page;
 use Illuminate\Http\Request;
@@ -12,6 +13,7 @@ class ContactController extends Controller
     {
         $logo = Logo::get()->first();
         $pages = Page::all();
-        return view('contact_us',compact('logo','pages'));
+        $categories = Category::all();
+        return view('contact_us',compact('logo','pages','categories'));
     }
 }
